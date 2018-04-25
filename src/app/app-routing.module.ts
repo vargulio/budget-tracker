@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 const routes: Routes = [
   {path: 'home', loadChildren: 'app/modules/home/home.module#HomeModule'},
   {path: 'auth', loadChildren: 'app/modules/authentication/authentication.module#AuthenticationModule'},
+  {path: 'transactions', loadChildren: 'app/modules/transactions/transaction.module#TransactionsModule'},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', redirectTo: 'home'}
 ];

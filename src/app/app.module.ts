@@ -9,6 +9,7 @@ import { SharedModule } from "./modules/shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
+import { TransactionsModule } from "./modules/transactions/transaction.module";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommonModule } from "@angular/common";
     HomeModule,
     SharedModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    TransactionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
