@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { UserDataService, AuthenticationService, HttpService } from "../../index";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'header-component',
@@ -17,7 +18,7 @@ export class HeaderComponent {
     /* Here we subscribe to change in the user, so we can update the header acordingly. */
     this.userDataService.userChangeObservable.subscribe(updatedUser => {
       this.user = updatedUser;
-    })
+    });
   }
 
   public addTransaction() {
@@ -25,7 +26,7 @@ export class HeaderComponent {
       console.log(response);
     }).catch(error => {
       console.error(error);
-    })
+    });
   }
 
   public logoutUser(): void {

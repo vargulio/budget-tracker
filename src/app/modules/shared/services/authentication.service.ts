@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { CookieService } from "angular2-cookie/core";
-import { HttpService, UserDataService } from "../index";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { CookieService } from 'angular2-cookie/core';
+import { HttpService, UserDataService } from '../index';
+import { Router } from '@angular/router';
 import { Keys } from '../../../../config/keys';
 import { API } from '../../../../config/api';
 
@@ -30,6 +30,8 @@ export class AuthenticationService {
     this.httpService.get(API.requests.authenticate.LOGOUT).toPromise().then(data => {
       this.cookieService.remove(Keys.google.cookieKey);
       this.userDataService.setUser();
+      this.router.navigate(['/']);
+
     }).catch(error => {
       console.log('HERE: ', error);
     });
@@ -41,17 +43,17 @@ export class AuthenticationService {
       this.router.navigate([this.REDIRECT_AFTER_LOGIN]);
     }).catch(error => {
       console.error('Login was not successful');
-    })
+    });
   }
 
   public checkForExistingCookie(): void {
-    let existingCookie = this.cookieService.get(Keys.google.cookieKey);
+    const existingCookie = this.cookieService.get(Keys.google.cookieKey);
     if (existingCookie) {
       this.httpService.get(API.requests.profile.GET_PROFILE).toPromise().then(data => {
         this.userDataService.setUser(data);
       }).catch(error => {
         console.log('HERE: ', error);
-      })
+      });
     }
   }
 }
