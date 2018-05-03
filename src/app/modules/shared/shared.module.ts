@@ -3,7 +3,6 @@ import {
     HttpService,
     HeaderComponent,
     CookieService,
-    UserDataService,
     CookieOptions,
     AuthenticationService,
     FormBuilderService,
@@ -25,7 +24,6 @@ import {RouterModule} from '@angular/router';
     ],
     providers: [
         HttpService,
-        UserDataService,
         AuthenticationService,
         {provide: CookieOptions, useValue: {}}, CookieService,
         FormBuilderService

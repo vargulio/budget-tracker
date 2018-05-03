@@ -39,6 +39,7 @@ export class AuthenticationService {
 
   public googleRedirectHandler(token): void {
     this.httpService.get(`${API.requests.authenticate.LOGIN}?${token}`).toPromise().then(data => {
+      console.log("TUK: ", data);
       this.userDataService.setUser(data);
       this.router.navigate([this.REDIRECT_AFTER_LOGIN]);
     }).catch(error => {
@@ -50,7 +51,10 @@ export class AuthenticationService {
     const existingCookie = this.cookieService.get(Keys.google.cookieKey);
     if (existingCookie) {
       this.httpService.get(API.requests.profile.GET_PROFILE).toPromise().then(data => {
-        this.userDataService.setUser(data);
+          console.log("TUK: ", data);
+
+          this.userDataService.setUser(data);
+          console.log("Baaam: ", new Date().getTime(),this.userDataService.getUser());
       }).catch(error => {
         console.log('HERE: ', error);
       });

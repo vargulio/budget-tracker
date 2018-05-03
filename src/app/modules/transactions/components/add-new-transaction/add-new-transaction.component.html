@@ -1,11 +1,14 @@
 <div class="form-layout">
     <div class="form" *ngIf="transactionForm">
         <form [formGroup]="transactionForm">
-            <input formControlName="amount" type="text" placeholder="amount"/>
+            <input #formControl formControlName="amount" type="text" placeholder="amount"/>
             <small>{{transactionForm.get('amount')?.errors | formatErrors}}</small>
             <textarea type="text" formControlName="description" placeholder="description"></textarea>
+            <small>{{transactionForm.get('description')?.errors | formatErrors}}</small>
             <input formControlName="repetetive" type="checkbox"/>
+            <small>{{transactionForm.get('description')?.errors | formatErrors}}</small>
             <input formControlName="category" placeholder="category"/>
+            <small>{{transactionForm.get('category')?.errors | formatErrors}}</small>
             <button (click)="printForm()">Add</button>
         </form>
     </div>

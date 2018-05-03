@@ -105,6 +105,10 @@ body {
   margin-bottom: 0 !important;
 }
 
+*[formControlName].ng-pristine + small {
+  visibility: hidden;
+}
+
 input + small,
 textarea + small{
   display: block;
@@ -112,3 +116,5 @@ textarea + small{
   color: red;
   margin-bottom: 15px;
 }
+
+

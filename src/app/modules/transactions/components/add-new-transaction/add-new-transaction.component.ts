@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormBuilderService, HttpService} from '../../../shared';
+import {FormBuilderService, HttpService, UserDataService} from '../../../shared';
 
 
 @Component({
@@ -14,26 +14,13 @@ export class AddNewTransactionComponent {
 
     constructor(private formBuilder: FormBuilder,
                 private httpService: HttpService,
-                private formBuilderService: FormBuilderService) {
+                private formBuilderService: FormBuilderService,
+                private userDataService: UserDataService) {
         this.formBuilderService.buildForm('validationSchema').then(form => {
             this.transactionForm = form;
+            console.log("BAAAAAM: ",new Date().getTime(),this.userDataService.getUser());
+            this.transactionForm.get('userId').setValue(this.userDataService.getUser().id);
             console.log(this.transactionForm);
-        });
-        this.createForm();
-        // this.httpService.get('validationSchema').toPromise().then(response => {
-        //     console.log(response);
-        // });
-    }
-
-    private createForm() {
-        this.transactionForm = this.formBuilder.group({
-            userId: ['abfbaifbauibfuia'],
-            amount: ['12'],
-            description: 'afsafas',
-            repetetive: true,
-            repeatInterval: 22,
-            category: '7',
-            creationDate: ''
         });
     }
 

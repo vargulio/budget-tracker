@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {TransactionsModule} from './modules/transactions/transaction.module';
+import {UserDataService} from './modules/shared';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {TransactionsModule} from './modules/transactions/transaction.module';
         RouterModule,
         TransactionsModule
     ],
-    providers: [],
+    // UserDataService instantiated here so it will be Singleton
+    providers: [UserDataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
