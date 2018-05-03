@@ -2,7 +2,7 @@
     <div class="form" *ngIf="transactionForm">
         <form [formGroup]="transactionForm">
             <input formControlName="amount" type="text" placeholder="amount"/>
-            <small>{{transactionForm.get('amount')?.errors}}</small>
+            <small>{{transactionForm.get('amount')?.errors | formatErrors}}</small>
             <textarea type="text" formControlName="description" placeholder="description"></textarea>
             <input formControlName="repetetive" type="checkbox"/>
             <input formControlName="category" placeholder="category"/>

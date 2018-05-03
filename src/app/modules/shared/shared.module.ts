@@ -6,15 +6,23 @@ import {
     UserDataService,
     CookieOptions,
     AuthenticationService,
-    FormBuilderService
+    FormBuilderService,
+    FormatErrorsPipe
 } from './index';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [CommonModule, RouterModule],
-    declarations: [HeaderComponent],
-    exports: [HeaderComponent],
+    declarations: [
+        HeaderComponent,
+        FormatErrorsPipe
+    ],
+    exports: [
+        HeaderComponent,
+        CommonModule,
+        FormatErrorsPipe
+    ],
     providers: [
         HttpService,
         UserDataService,
