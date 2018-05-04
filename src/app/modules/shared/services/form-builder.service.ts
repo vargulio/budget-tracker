@@ -56,7 +56,7 @@ export class FormBuilderService {
             });
         }
 
-        if (validationSchema['isInt']) {
+        if (validationSchema['isInt'] || validationSchema['isNumeric']) {
             validators.push((control: AbstractControl) => {
                 return isNaN(control.value) ? {isNumeric: false} : null;
             });

@@ -11,17 +11,29 @@ import {FormBuilderService, HttpService, UserDataService} from '../../../shared'
 export class AddNewTransactionComponent {
 
     public transactionForm: FormGroup;
+    public transactionCategories: Array<any>;
+    public repeatIntervals: Array<any>;
 
-    constructor(private formBuilder: FormBuilder,
-                private httpService: HttpService,
-                private formBuilderService: FormBuilderService,
-                private userDataService: UserDataService) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private httpService: HttpService,
+        private formBuilderService: FormBuilderService,
+        private userDataService: UserDataService) {
+
         this.formBuilderService.buildForm('validationSchema').then(form => {
             this.transactionForm = form;
-            console.log("BAAAAAM: ",new Date().getTime(),this.userDataService.getUser());
             this.transactionForm.get('userId').setValue(this.userDataService.getUser().id);
-            console.log(this.transactionForm);
+            this.transactionForm.get('repetetive').setValue(false);
+            this.httpService.get('getTransactionCategories').toPromise().then(response => {
+                this.transactionCategories = response;
+                this.transactionForm.get('category').setValue(this.transactionCategories[0].id);
+            });
+            this.httpService.get('getRepeatIntervals').toPromise().then(response => {
+                this.repeatIntervals = response;
+                this.transactionForm.get('repeatInterval').setValue(this.repeatIntervals[0].id);
+            });
         });
+
     }
 
     public printForm() {
