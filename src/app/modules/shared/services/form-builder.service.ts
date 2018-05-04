@@ -45,6 +45,17 @@ export class FormBuilderService {
             }
         }
 
+        // enum validation
+        if (validationSchema['isIn']) {
+            const enumOptions = validationSchema['isIn']['options'][0];
+            validators.push((control: AbstractControl) => {
+                return (enumOptions.indexOf(parseInt(control.value)) === -1) ? {
+                    isIn: false,
+                    options: validationSchema['isIn']['options'][0]
+                } : null;
+            });
+        }
+
         if (validationSchema['isInt']) {
             validators.push((control: AbstractControl) => {
                 return isNaN(control.value) ? {isNumeric: false} : null;

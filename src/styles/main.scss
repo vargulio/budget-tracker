@@ -108,11 +108,12 @@ body {
 *[formControlName].ng-pristine + small {
   visibility: hidden;
 }
-
+select + small,
 input + small,
 textarea + small{
   display: block;
-  height: 15px;
+  min-height: 15px;
+  line-height: 15px;
   color: red;
   margin-bottom: 15px;
 }
